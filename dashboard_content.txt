@@ -1,0 +1,58 @@
+DCP UNIVERSITY ENGINEERING CHALLENGE
+Track 2 — Predictive Maintenance & Reliability Early-Warning System
+Dashboard Content Specification
+UI Designer — content and structure reference for the risk dashboard
+This document lays out what should appear on each dashboard screen so wireframes and mockups can be built directly from it, without reverse-engineering the content from backend or model documentation.
+Overall Structure — Three Views
+    • Overview / Fleet view (landing screen)
+    • Machine detail view (drill-down per machine)
+    • Alerts / history log
+1. Overview Dashboard
+The "at a glance" screen — this is what judges will see first, so it needs to sell the concept in seconds.
+    • Header: plant name/selector, current date/time, overall plant health summary (e.g. "2 machines need attention")
+Machine status cards (grid, one per machine)
+        ◦ Machine name and icon
+        ◦ Risk score as a gauge/ring (0–100, color-coded green / amber / red)
+        ◦ Status label: Normal / Warning / Critical
+        ◦ One-line summary, e.g. "Bearing temp trending up — 4.2 days to likely failure"
+        ◦ Small sparkline showing recent trend
+    • Top alert banner: persistent and unmissable if any machine reaches Critical status
+    • Quick stats row: total machines monitored, active warnings, estimated downtime hours avoided — a strong "value delivered" framing for the pitch
+2. Machine Detail View
+Opens when a machine card is selected from the overview.
+    • Header: machine name, current risk score (large, prominent), status badge
+Live / simulated sensor readouts (4 cards or a row)
+        ◦ Vibration (mm/s)
+        ◦ Temperature (°C)
+        ◦ Current draw (A)
+        ◦ Acoustic level (dB)
+        ◦ Each with current value plus a small up/down trend arrow
+Main trend chart
+Time-series line chart of the key degrading signal(s) over the last N hours/days, including:
+        ◦ Warning threshold line
+        ◦ Critical threshold line
+        ◦ Shaded "danger zone" region
+        ◦ Marker showing the current / "today" point
+    • Risk score history chart: risk score plotted over time, showing the climb toward critical
+Prediction panel
+        ◦ "Estimated time to failure: 4.2 days"
+        ◦ "Contributing factors: vibration trend (primary), bearing temperature (secondary)"
+        ◦ Confidence indicator (optional) — even a simple "based on current trend" caveat is good practice
+    • Recommended action box: e.g. "Schedule bearing inspection within 5 days" — the "so what" that turns data into a decision, and a key element judges will look for given the challenge brief's emphasis on decision-support value
+3. Alerts / History Log
+    • Chronological list of past alerts across all machines: timestamp, machine, severity, message
+    • Filter by machine, severity, and date range
+    • Each entry expandable to show sensor values at the time of the alert
+This view demonstrates that the system has memory and an audit trail — useful for the "improves data quality and decision-making" angle from the challenge brief.
+Visual / UX Notes
+    • Color coding: green / amber / red must stay consistent everywhere — cards, charts, and badges alike
+    • Risk score gauge: the single most important visual element; make it the hero, since it's the one number a plant manager would glance at first
+    • Dark theme: the existing dark design system (brand color #AC41FF, Syne headings, DM Sans body) should translate well here — a dark background makes red/amber alert states pop more than a light theme would
+    • Avoid clutter: judges evaluate within a short pitch window, so the overview screen especially needs to communicate "this machine is about to fail and here's why" almost instantly
+Screen Summary Table
+Screen	Primary Purpose
+Overview / Fleet	At-a-glance plant health; sells the concept in seconds
+Machine Detail	Deep dive into one machine's sensors, trend, and prediction
+Alerts / History	Audit trail and evidence of data-driven decision-making
+
+Prepared for the ULES ARB / Dangote Cement Plc Undergraduate Industry-Based Engineering Research Competition — Track 2.
